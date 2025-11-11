@@ -1,9 +1,10 @@
+// File: simopugliese/walletgui/WalletGUI/src/main/java/com/simonepugliese/walletgui/ScreenNavigator.java
 package com.simonepugliese.walletgui;
 
 import com.simonepugliese.Core.WalletManager;
 import com.simonepugliese.Security.DecryptionFailedException;
 import com.simonepugliese.WalletFactory;
-import com.simonepugliese.walletgui.controllers.*;
+import com.simonepugliese.walletgui.controllers.*; // Assicura che HelloController sia importato
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +16,8 @@ import java.io.IOException;
 /**
  * Gestisce la navigazione tra le diverse schermate (Scene/FXML)
  * all'interno della finestra principale (Stage).
+ *
+ * FILE CORRETTO: Path FXML aggiornati.
  */
 public class ScreenNavigator {
 
@@ -35,8 +38,8 @@ public class ScreenNavigator {
     public void showLogin() {
         try {
             // 1. Carica l'FXML del login
-            // Assicurati che il path sia corretto!
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/gui/views/login.fxml"));
+            // *** CORREZIONE: Path aggiornato da /gui/views/ a /walletgui/ ***
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/walletgui/login.fxml"));
             Parent root = loader.load();
 
             // 2. "Inietta" questo navigator nel controller del login
@@ -62,25 +65,6 @@ public class ScreenNavigator {
     public void attemptLogin(String password) {
         try {
             // 1. Tenta di creare il WalletManager usando la tua Factory.
-            // Questa è la vera validazione della password.
-            // Se la password è errata, il costruttore di EntryCriptor
-            // (chiamato dalla factory) fallirà al primo 'decrypt'.
-            // NOTA: Se il DB è vuoto, questo ha successo. Per una vera
-            // validazione, il manager dovrebbe avere un metodo tipo 'isValidPassword()'
-            // che tenta un decrypt fittizio. Per ora, assumiamo che
-            // DecryptionFailedException sia lanciata solo per password errata.
-
-            // Per simulare un controllo vero, bisognerebbe che WalletFactory
-            // o WalletManager facessero un test di decrittazione.
-            // Per ora, ci affidiamo al fatto che un'operazione fallirà
-            // se la password è errata.
-
-            // --- MODIFICA PER UN LOGIN ROBUSTO ---
-            // Idealmente, il tuo WalletManager dovrebbe avere un metodo:
-            // manager.testPassword()
-            // In assenza di questo, creiamo il manager e *immediatamente*
-            // proviamo a caricare i dati. Se fallisce, la password è errata.
-
             this.manager = WalletFactory.createWalletManager(password);
 
             // Prova di caricamento: se la password è errata, questo lancerà
@@ -106,18 +90,25 @@ public class ScreenNavigator {
      */
     private void showHome() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/gui/views/home.fxml"));
+            // *** CORREZIONE: Path aggiornato a 'hello-view.fxml' (l'unico FXML "home" disponibile) ***
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/walletgui/hello-view.fxml"));
             Parent root = loader.load();
 
-            // Inietta sia il navigator che il manager nel controller della home
-            HomeController controller = loader.getController();
-            controller.setNavigator(this);
-            controller.setManager(this.manager); // Passa il backend!
+            // *** CORREZIONE: Modificato da HomeController a HelloController ***
+            // Nota: HelloController al momento non fa nulla. Per la vera
+            // implementazione, dovrai creare un home.fxml e un HomeController
+            // che accettino il Navigator e il Manager.
+            HelloController controller = loader.getController();
+
+            // Le righe seguenti non funzionano perché HelloController
+            // non ha i metodi setNavigator() e setManager().
+            // controller.setNavigator(this);
+            // controller.setManager(this.manager); // Passa il backend!
 
             stage.setScene(new Scene(root, 800, 600)); // Dimensioni per la home
             stage.setTitle("Wallet - Home");
         } catch (IOException e) {
-            System.err.println("Errore fatale: impossibile caricare home.fxml");
+            System.err.println("Errore fatale: impossibile caricare home.fxml (hello-view.fxml)");
             e.printStackTrace();
         }
     }

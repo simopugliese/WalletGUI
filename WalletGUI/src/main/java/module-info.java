@@ -14,7 +14,6 @@ module com.simonepugliese.walletgui {
     requires org.kordamp.ikonli.javafx;
 
     opens com.simonepugliese.walletgui to javafx.fxml, javafx.graphics;
-    opens com.simonepugliese.wallet to  javafx.fxml, javafx.graphics;
 
     exports com.simonepugliese.walletgui;
     exports com.simonepugliese.walletgui.controllers;
