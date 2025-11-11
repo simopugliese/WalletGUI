@@ -57,7 +57,7 @@ public class LoginController {
             // Deleghiamo il TENTATIVO di login al navigator.
             // Questo controller non sa (e non deve sapere)
             // cosa succede dopo.
-            navigator.attemptLogin(password);
+            navigator.attemptLogin(password); //prova a fare il login
         } else {
             System.err.println("Errore: ScreenNavigator non impostato!");
         }
