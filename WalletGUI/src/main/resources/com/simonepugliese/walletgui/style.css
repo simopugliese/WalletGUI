@@ -1,0 +1,27 @@
+/* Esempio per style.css */
+
+.root-pane {
+    -fx-background-color: #FAFAFA;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.jfx-password-field {
+    -fx-font-size: 14px;
+}
+
+.verify-label {
+    -fx-font-size: 12px;
+}
+
+/* Stile per il bottone di login.
+  'button-raised' è di JFoenix, noi sovrascriviamo/aggiungiamo colori.
+*/
+.button-raised {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: WHITE;
+    -fx-font-size: 14px;
+}

@@ -5,30 +5,45 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
 
 <VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0"
-      spacing="25.0" style="-fx-background-color: #FAFAFA;"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0"
+      spacing="20.0" styleClass="root-pane"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.simonepugliese.walletgui.controllers.LoginController">
+
+    <stylesheets>
+        <String fx:value="@style.css" />
+    </stylesheets>
 
     <padding>
         <Insets bottom="20.0" left="40.0" right="40.0" top="20.0"/>
     </padding>
 
-    <Label text="Wallet Login">
-        <font>
-            <Font name="System Bold" size="24.0"/>
-        </font>
-    </Label>
+    <Label fx:id="titleLabel" text="Wallet Login" styleClass="title-label" />
 
     <JFXPasswordField fx:id="passwordField" onAction="#handleLogin"
-                      promptText="Master Password"
-                      style="-fx-font-size: 14px;"/>
+                      promptText="Master Password" />
+
+    <Label fx:id="verifyPasswordLabel" text="Verifica Password"
+           styleClass="verify-label"
+           managed="false" visible="false">
+        <VBox.margin>
+            <Insets top="10.0"/>
+        </VBox.margin>
+    </Label>
+
+    <JFXPasswordField fx:id="verifyPasswordField" onAction="#handleLogin"
+                      promptText="Ripeti la password"
+                      managed="false" visible="false"/>
 
     <JFXButton fx:id="loginButton" onAction="#handleLogin"
                prefHeight="40.0" prefWidth="120.0"
-               styleClass="button-raised" text="Accedi"
-               style="-fx-background-color: #2196F3; -fx-text-fill: WHITE; -fx-font-size: 14px;"/>
+               text="Accedi"
+               styleClass="button-raised" >
+        <VBox.margin>
+            <Insets top="15.0"/>
+        </VBox.margin>
+    </JFXButton>
 </VBox>
