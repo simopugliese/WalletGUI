@@ -58,15 +58,12 @@ public class ScreenNavigator {
 
             HomeController controller = loader.getController();
 
-            // Le righe seguenti non funzionano perché HelloController
-            // non ha i metodi setNavigator() e setManager().
-            // controller.setNavigator(this);
-            // controller.setManager(this.manager); // Passa il backend!
+            controller.setNavigator(this);
+            controller.setManager(this.manager);
+
             stage.setScene(new Scene(root, 800, 600));
             stage.setTitle("Wallet - Home");
         } catch (IOException e) {
-            mostraErrore("errore", "impossibile caricare home.fxml");
-            System.err.println("Errore fatale: impossibile caricare home.fxml");
             e.printStackTrace();
         }
     }
