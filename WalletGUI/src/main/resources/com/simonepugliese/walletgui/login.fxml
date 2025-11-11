@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0"
+      spacing="25.0" style="-fx-background-color: #FAFAFA;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.simonepugliese.walletgui.controllers.LoginController">
+
+    <padding>
+        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0"/>
+    </padding>
+
+    <Label text="Wallet Login">
+        <font>
+            <Font name="System Bold" size="24.0"/>
+        </font>
+    </Label>
+
+    <JFXPasswordField fx:id="passwordField" onAction="#handleLogin"
+                      promptText="Master Password"
+                      style="-fx-font-size: 14px;"/>
+
+    <JFXButton fx:id="loginButton" onAction="#handleLogin"
+               prefHeight="40.0" prefWidth="120.0"
+               styleClass="button-raised" text="Accedi"
+               style="-fx-background-color: #2196F3; -fx-text-fill: WHITE; -fx-font-size: 14px;"/>
+</VBox>
