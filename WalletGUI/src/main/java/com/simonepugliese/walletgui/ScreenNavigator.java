@@ -29,8 +29,7 @@ public class ScreenNavigator {
             LoginController controller = loader.getController();
             controller.setNavigator(this);
 
-            stage.setScene(new Scene(root, 400, 300));
-            stage.setTitle("Wallet - Login");
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
             mostraErrore("errore", "impossibile caricare login.fxml");
             System.err.println("Errore fatale: impossibile caricare login.fxml");

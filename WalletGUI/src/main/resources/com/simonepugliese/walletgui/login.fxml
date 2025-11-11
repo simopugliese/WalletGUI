@@ -14,7 +14,7 @@
       fx:controller="com.simonepugliese.walletgui.controllers.LoginController">
 
     <stylesheets>
-        <String fx:value="@style.css" />
+        <String fx:value="style.css" />
     </stylesheets>
 
     <padding>
