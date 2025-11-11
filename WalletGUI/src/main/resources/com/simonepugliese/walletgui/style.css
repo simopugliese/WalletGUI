@@ -25,3 +25,20 @@
     -fx-text-fill: WHITE;
     -fx-font-size: 14px;
 }
+
+
+.toolbar {
+    /* Sfondo bianco e ombra per la toolbar in alto */
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.0, 0, 3);
+}
+
+.drawer-pane {
+    /* Sfondo per il menu laterale */
+    -fx-background-color: #FAFAFA;
+}
+
+.drawer-list {
+    /* Sfondo per la lista nel menu (così si abbina) */
+    -fx-background-color: #FAFAFA;
+}
