@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class ScreenNavigator {
 
@@ -30,7 +31,7 @@ public class ScreenNavigator {
             LoginController controller = loader.getController();
             controller.setNavigator(this);
 
-            stage.setScene(new Scene(root));
+            stage.setScene(createScene(root));
         } catch (IOException e) {
             mostraErrore("Errore Fatale", "Impossibile caricare login.fxml");
             e.printStackTrace();
@@ -56,11 +57,10 @@ public class ScreenNavigator {
             Parent root = loader.load();
 
             HomeController controller = loader.getController();
-
             controller.setNavigator(this);
             controller.setManager(this.manager);
 
-            stage.setScene(new Scene(root, 800, 600));
+            stage.setScene(createScene(root, 800, 600));
             stage.setTitle("Wallet - Home");
         } catch (IOException e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class ScreenNavigator {
             controller.setManager(this.manager);
             controller.loadEntryData(entryId);
 
-            stage.setScene(new Scene(root, 800, 600));
+            stage.setScene(createScene(root, 800, 600));
             stage.setTitle("Wallet - Dettaglio");
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,10 +85,6 @@ public class ScreenNavigator {
         }
     }
 
-    /**
-     * Mostra l'editor per creare o modificare un'entry.
-     * @param entryToEdit L'entry da modificare, o null per crearne una nuova.
-     */
     public void showEntryEditor(Entry entryToEdit) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/walletgui/entry_editor.fxml"));
@@ -97,11 +93,9 @@ public class ScreenNavigator {
             EntryEditorController controller = loader.getController();
             controller.setNavigator(this);
             controller.setManager(this.manager);
-
-            // Se passiamo null, l'editor si prepara per una nuova creazione
             controller.initEditor(entryToEdit);
 
-            stage.setScene(new Scene(root, 800, 600));
+            stage.setScene(createScene(root, 800, 600));
             stage.setTitle(entryToEdit == null ? "Nuova Entry" : "Modifica Entry");
         } catch (IOException e) {
             e.printStackTrace();
@@ -117,6 +111,32 @@ public class ScreenNavigator {
         if (manager != null) {
             manager.close();
             System.out.println("WalletManager chiuso.");
+        }
+    }
+
+    // --- Metodi Helper per il CSS e la Scena ---
+
+    private Scene createScene(Parent root) {
+        Scene scene = new Scene(root);
+        applyStyle(scene);
+        return scene;
+    }
+
+    private Scene createScene(Parent root, double width, double height) {
+        Scene scene = new Scene(root, width, height);
+        applyStyle(scene);
+        return scene;
+    }
+
+    private void applyStyle(Scene scene) {
+        // Usa percorso relativo: cerca "style.css" nello stesso package di ScreenNavigator
+        URL cssUrl = getClass().getResource("style.css");
+
+        if (cssUrl != null) {
+            scene.getStylesheets().add(cssUrl.toExternalForm());
+            System.out.println("✅ CSS caricato: " + cssUrl.toExternalForm());
+        } else {
+            System.err.println("❌ ERRORE: style.css non trovato! Verifica che sia in src/main/resources/com/simonepugliese/walletgui/");
         }
     }
 

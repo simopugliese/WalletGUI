@@ -5,17 +5,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import java.lang.String?>
 
 <VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0"
       spacing="20.0" styleClass="root-pane"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.simonepugliese.walletgui.controllers.LoginController">
-
-    <stylesheets>
-        <String fx:value="@style.css" />
-    </stylesheets>
 
     <padding>
         <Insets bottom="20.0" left="40.0" right="40.0" top="20.0"/>

@@ -7,15 +7,10 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import java.lang.String?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.simonepugliese.walletgui.controllers.EntryDetailController"
             prefHeight="600.0" prefWidth="800.0">
-
-    <stylesheets>
-        <String fx:value="@style.css" />
-    </stylesheets>
 
     <top>
         <JFXToolbar styleClass="toolbar">
