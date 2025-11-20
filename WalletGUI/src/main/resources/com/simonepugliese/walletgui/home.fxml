@@ -36,11 +36,9 @@
         </center>
     </BorderPane>
 
-    <JFXDrawer fx:id="categoryDrawer" direction="LEFT" defaultDrawerSize="220"
-               visible="false" managed="false">
+    <JFXDrawer fx:id="categoryDrawer" direction="LEFT" defaultDrawerSize="350">
         <sidePane>
-            <VBox styleClass="drawer-pane">
-                <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
+            <VBox styleClass="drawer-pane" prefWidth="500.0"> <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
             </VBox>
         </sidePane>
     </JFXDrawer>

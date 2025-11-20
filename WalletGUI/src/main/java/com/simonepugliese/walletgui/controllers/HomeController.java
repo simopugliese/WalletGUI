@@ -32,10 +32,9 @@ public class HomeController {
     @FXML
     public void initialize() {
         hamburgerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+            categoryDrawer.open();
+
             //drawersStack.toggle(categoryDrawer);
-            //categoryDrawer.open();
-            drawersStack.toggle(categoryDrawer, true);
-            //TODO: sistema
         });
 
         categoryListView.getItems().addAll("Tutte le Entry", "Password", "Note Sicure", "Carte");
