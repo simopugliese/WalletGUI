@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXDrawersStack?>
 <?import com.jfoenix.controls.JFXHamburger?>
@@ -41,6 +42,10 @@
                     <center>
                         <Label fx:id="titleLabel" text="Tutte le Entry" styleClass="title-label" />
                     </center>
+                    <rightItems>
+                        <JFXButton text="+" onAction="#handleNewEntry"
+                                   style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                    </rightItems>
                 </JFXToolbar>
             </top>
             <center>

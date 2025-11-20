@@ -1,6 +1,7 @@
 package com.simonepugliese.walletgui;
 
 import com.simonepugliese.Core.WalletManager;
+import com.simonepugliese.Model.Entry;
 import com.simonepugliese.Security.DecryptionFailedException;
 import com.simonepugliese.WalletFactory;
 import com.simonepugliese.walletgui.controllers.*;
@@ -31,8 +32,7 @@ public class ScreenNavigator {
 
             stage.setScene(new Scene(root));
         } catch (IOException e) {
-            mostraErrore("errore", "impossibile caricare login.fxml");
-            System.err.println("Errore fatale: impossibile caricare login.fxml");
+            mostraErrore("Errore Fatale", "Impossibile caricare login.fxml");
             e.printStackTrace();
         }
     }
@@ -67,10 +67,6 @@ public class ScreenNavigator {
         }
     }
 
-    /**
-     * Mostra il dettaglio di una specifica entry.
-     * @param entryId L'ID univoco dell'entry da visualizzare.
-     */
     public void showEntryDetail(String entryId) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/walletgui/entry_detail.fxml"));
@@ -79,8 +75,6 @@ public class ScreenNavigator {
             EntryDetailController controller = loader.getController();
             controller.setNavigator(this);
             controller.setManager(this.manager);
-
-            // Passiamo l'ID: il controller caricherà i dati decifrati
             controller.loadEntryData(entryId);
 
             stage.setScene(new Scene(root, 800, 600));
@@ -92,8 +86,29 @@ public class ScreenNavigator {
     }
 
     /**
-     * Torna alla Home (usato dal pulsante "Indietro" nel dettaglio).
+     * Mostra l'editor per creare o modificare un'entry.
+     * @param entryToEdit L'entry da modificare, o null per crearne una nuova.
      */
+    public void showEntryEditor(Entry entryToEdit) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/walletgui/entry_editor.fxml"));
+            Parent root = loader.load();
+
+            EntryEditorController controller = loader.getController();
+            controller.setNavigator(this);
+            controller.setManager(this.manager);
+
+            // Se passiamo null, l'editor si prepara per una nuova creazione
+            controller.initEditor(entryToEdit);
+
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle(entryToEdit == null ? "Nuova Entry" : "Modifica Entry");
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostraErrore("Errore Navigazione", "Impossibile caricare l'editor.");
+        }
+    }
+
     public void goBackToHome() {
         showHome();
     }
@@ -101,7 +116,7 @@ public class ScreenNavigator {
     public void closeManager() {
         if (manager != null) {
             manager.close();
-            System.out.println("WalletManager chiuso e password azzerata.");
+            System.out.println("WalletManager chiuso.");
         }
     }
 

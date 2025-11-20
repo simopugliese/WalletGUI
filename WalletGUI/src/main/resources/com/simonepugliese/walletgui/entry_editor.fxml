@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import java.lang.String?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simonepugliese.walletgui.controllers.EntryEditorController"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <stylesheets>
+        <String fx:value="@style.css" />
+    </stylesheets>
+
+    <top>
+        <JFXToolbar styleClass="toolbar">
+            <leftItems>
+                <JFXButton text="Annulla" onAction="#handleCancel" />
+            </leftItems>
+            <center>
+                <Label fx:id="headerLabel" text="Nuova Entry" styleClass="title-label"/>
+            </center>
+            <rightItems>
+                <JFXButton text="Salva" onAction="#handleSave"
+                           style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+            </rightItems>
+        </JFXToolbar>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <content>
+                <VBox spacing="25.0" style="-fx-background-color: white;">
+                    <padding>
+                        <Insets top="20" right="40" bottom="20" left="40"/>
+                    </padding>
+
+                    <VBox spacing="10">
+                        <Label text="Informazioni Generali" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                        <JFXTextField fx:id="descriptionField" promptText="Nome (es. Facebook, Banca Intesa)" />
+                        <JFXComboBox fx:id="categoryComboBox" promptText="Categoria" prefWidth="300.0"/>
+                    </VBox>
+
+                    <VBox spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Campi Dati" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                            <JFXButton text="+ Aggiungi Campo" onAction="#addFieldRow"
+                                       style="-fx-border-color: #2196F3; -fx-text-fill: #2196F3;"/>
+                        </HBox>
+
+                        <VBox fx:id="fieldsContainer" spacing="15.0" />
+                    </VBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
