@@ -67,13 +67,36 @@ public class ScreenNavigator {
         }
     }
 
-    /* * Qui aggiungerai altri metodi per la navigazione:
-     *
-     * public void showEntryDetail(Entry entry) { ... }
-     * public void showAddEntry() { ... }
-     * public void showEditEntry(Entry entry) { ... }
-     * public void goBackToHome() { showHome(); }
+    /**
+     * Mostra il dettaglio di una specifica entry.
+     * @param entryId L'ID univoco dell'entry da visualizzare.
      */
+    public void showEntryDetail(String entryId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/simonepugliese/walletgui/entry_detail.fxml"));
+            Parent root = loader.load();
+
+            EntryDetailController controller = loader.getController();
+            controller.setNavigator(this);
+            controller.setManager(this.manager);
+
+            // Passiamo l'ID: il controller caricherà i dati decifrati
+            controller.loadEntryData(entryId);
+
+            stage.setScene(new Scene(root, 800, 600));
+            stage.setTitle("Wallet - Dettaglio");
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostraErrore("Errore Navigazione", "Impossibile caricare il dettaglio entry.");
+        }
+    }
+
+    /**
+     * Torna alla Home (usato dal pulsante "Indietro" nel dettaglio).
+     */
+    public void goBackToHome() {
+        showHome();
+    }
 
     public void closeManager() {
         if (manager != null) {

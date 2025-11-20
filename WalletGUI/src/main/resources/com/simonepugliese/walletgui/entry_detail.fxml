@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.lang.String?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simonepugliese.walletgui.controllers.EntryDetailController"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <stylesheets>
+        <String fx:value="@style.css" />
+    </stylesheets>
+
+    <top>
+        <JFXToolbar styleClass="toolbar">
+            <leftItems>
+                <JFXButton text="← Indietro" onAction="#handleBack" style="-fx-font-size: 14px;" />
+            </leftItems>
+            <center>
+                <Label fx:id="titleLabel" text="Dettaglio Entry" styleClass="title-label"/>
+            </center>
+        </JFXToolbar>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <content>
+                <VBox fx:id="fieldsContainer" spacing="20.0" style="-fx-background-color: white;">
+                    <padding>
+                        <Insets top="20" right="40" bottom="20" left="40"/>
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
