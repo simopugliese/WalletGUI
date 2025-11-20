@@ -20,25 +20,30 @@
         <String fx:value="@style.css" />
     </stylesheets>
 
-    <BorderPane>
-        <top>
-            <JFXToolbar styleClass="toolbar">
-                <leftItems>
-                    <JFXHamburger fx:id="hamburgerButton" />
-                </leftItems>
-                <center>
-                    <Label fx:id="titleLabel" text="Tutte le Entry" styleClass="title-label" />
-                </center>
-            </JFXToolbar>
-        </top>
-        <center>
-            <AnchorPane fx:id="contentPane" />
-        </center>
-    </BorderPane>
+    <content>
+        <BorderPane>
+            <top>
+                <JFXToolbar styleClass="toolbar">
+                    <leftItems>
+                        <JFXHamburger fx:id="hamburgerButton" />
+                    </leftItems>
+                    <center>
+                        <Label fx:id="titleLabel" text="Tutte le Entry" styleClass="title-label" />
+                    </center>
+                </JFXToolbar>
+            </top>
+            <center>
+                <AnchorPane fx:id="contentPane" />
+            </center>
+        </BorderPane>
+    </content>
 
-    <JFXDrawer fx:id="categoryDrawer" direction="LEFT" defaultDrawerSize="350">
+    <JFXDrawer fx:id="categoryDrawer" direction="LEFT" defaultDrawerSize="220"
+               resizableOnDrag="true"
+               visible="false" managed="false">
         <sidePane>
-            <VBox styleClass="drawer-pane" prefWidth="500.0"> <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
+            <VBox styleClass="drawer-pane" prefWidth="220">
+                <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
             </VBox>
         </sidePane>
     </JFXDrawer>
