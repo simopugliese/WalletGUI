@@ -21,7 +21,7 @@
                    resizableOnDrag="true">
             <sidePane>
                 <VBox styleClass="drawer-pane" prefWidth="220">
-                    <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
+                    <JFXListView fx:id="categoryListView"/>
                 </VBox>
             </sidePane>
         </JFXDrawer>
@@ -39,7 +39,7 @@
                     </center>
                     <rightItems>
                         <JFXButton text="+" onAction="#handleNewEntry"
-                                   style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                                   styleClass="button-success" />
                     </rightItems>
                 </JFXToolbar>
             </top>

@@ -18,37 +18,32 @@
     <top>
         <JFXToolbar styleClass="toolbar">
             <leftItems>
-                <JFXButton text="Annulla" onAction="#handleCancel" />
+                <JFXButton text="Annulla" onAction="#handleCancel" styleClass="button-flat"/>
             </leftItems>
             <center>
                 <Label fx:id="headerLabel" text="Nuova Entry" styleClass="title-label"/>
             </center>
             <rightItems>
-                <JFXButton text="Salva" onAction="#handleSave"
-                           style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                <JFXButton text="Salva" onAction="#handleSave" styleClass="button-primary" />
             </rightItems>
         </JFXToolbar>
     </top>
 
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 20;">
             <content>
-                <VBox spacing="25.0" style="-fx-background-color: white;">
-                    <padding>
-                        <Insets top="20" right="40" bottom="20" left="40"/>
-                    </padding>
+                <VBox spacing="25.0" style="-fx-background-color: transparent;">
 
-                    <VBox spacing="10">
-                        <Label text="Informazioni Generali" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-                        <JFXTextField fx:id="descriptionField" promptText="Nome (es. Facebook, Banca Intesa)" />
-                        <JFXComboBox fx:id="categoryComboBox" promptText="Categoria" prefWidth="300.0"/>
+                    <VBox spacing="15" styleClass="card-pane">
+                        <Label text="Informazioni Generali" styleClass="subtitle-label"/>
+                        <JFXTextField fx:id="descriptionField" promptText="Nome (es. Facebook)" labelFloat="true"/>
+                        <JFXComboBox fx:id="categoryComboBox" promptText="Categoria" prefWidth="300.0" labelFloat="true"/>
                     </VBox>
 
-                    <VBox spacing="10">
-                        <HBox alignment="CENTER_LEFT" spacing="10">
-                            <Label text="Campi Dati" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-                            <JFXButton text="+ Aggiungi Campo" onAction="#addFieldRow"
-                                       style="-fx-border-color: #2196F3; -fx-text-fill: #2196F3;"/>
+                    <VBox spacing="15">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Label text="Campi Dati" styleClass="subtitle-label"/>
+                            <JFXButton text="+ Aggiungi Campo" onAction="#addFieldRow" styleClass="button-outline"/>
                         </HBox>
 
                         <VBox fx:id="fieldsContainer" spacing="15.0" />

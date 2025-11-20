@@ -1,44 +1,149 @@
-/* Esempio per style.css */
-
-.root-pane {
-    -fx-background-color: #FAFAFA;
+/* --- GLOBAL & RESET --- */
+.root {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #F4F7F6; /* Grigio molto chiaro per lo sfondo app */
 }
 
+/* Pannello bianco "Card" (usato in login e editor) */
+.card-pane {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-background-radius: 4px;
+    -fx-padding: 30px;
+}
+
+/* --- TYPOGRAPHY --- */
 .title-label {
-    -fx-font-size: 24px;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
+    -fx-text-fill: #333333;
 }
 
-.jfx-password-field {
-    -fx-font-size: 14px;
+.subtitle-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
 }
 
-.verify-label {
+.label-small {
     -fx-font-size: 12px;
+    -fx-text-fill: #777777;
 }
 
-/* Stile per il bottone di login.
-  'button-raised' è di JFoenix, noi sovrascriviamo/aggiungiamo colori.
-*/
-.button-raised {
+/* --- TOOLBAR --- */
+.toolbar {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 10px 20px;
+    /* Ombra sottile sotto la toolbar */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+/* --- BUTTONS --- */
+.jfx-button {
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 16px;
+}
+
+/* Bottone Primario (Blu) */
+.button-primary {
     -fx-background-color: #2196F3;
-    -fx-text-fill: WHITE;
+    -fx-text-fill: white;
+}
+.button-primary:hover {
+    -fx-background-color: #1976D2;
+}
+
+/* Bottone Successo (Verde - es. tasto +) */
+.button-success {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 20px; /* Rotondo/Ovale */
+}
+.button-success:hover {
+    -fx-background-color: #388E3C;
+}
+
+/* Bottone Pericolo/Elimina (Rosso, ghost) */
+.button-danger {
+    -fx-background-color: transparent;
+    -fx-text-fill: #F44336;
+    -fx-border-color: #F44336;
+    -fx-border-radius: 4px;
+}
+.button-danger:hover {
+    -fx-background-color: #FFEBEE;
+}
+
+/* Bottone Secondario (Grigio - es. Copia) */
+.button-secondary {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: #333;
+}
+.button-secondary:hover {
+    -fx-background-color: #D6D6D6;
+}
+
+/* Bottone Piatto (es. Indietro/Annulla) */
+.button-flat {
+    -fx-background-color: transparent;
+    -fx-text-fill: #555;
+}
+.button-flat:hover {
+    -fx-background-color: #EEEEEE;
+}
+
+/* Bottone Aggiungi Riga (Outline Blu) */
+.button-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: #2196F3;
+    -fx-border-radius: 4px;
+    -fx-text-fill: #2196F3;
+}
+.button-outline:hover {
+    -fx-background-color: #E3F2FD;
+}
+
+/* --- TEXT FIELDS --- */
+.jfx-text-field, .jfx-password-field {
+    -fx-prompt-text-fill: #999;
     -fx-font-size: 14px;
 }
 
-
-.toolbar {
-    /* Sfondo bianco e ombra per la toolbar in alto */
-    -fx-background-color: #FFFFFF;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.0, 0, 3);
-}
-
+/* --- DRAWER / SIDEBAR --- */
 .drawer-pane {
-    /* Sfondo per il menu laterale */
-    -fx-background-color: #FAFAFA;
+    -fx-background-color: white;
+    -fx-border-color: transparent #E0E0E0 transparent transparent; /* Riga destra */
 }
 
-.drawer-list {
-    /* Sfondo per la lista nel menu (così si abbina) */
-    -fx-background-color: #FAFAFA;
+.jfx-list-view {
+    -fx-background-color: transparent;
+}
+
+.jfx-list-cell {
+    -fx-padding: 12px 20px;
+    -fx-text-fill: #333;
+}
+.jfx-list-cell:selected {
+    -fx-background-color: #E3F2FD; /* Azzurro chiaro */
+    -fx-text-fill: #1976D2;      /* Testo blu */
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent transparent #2196F3; /* Linea blu a sinistra */
+    -fx-border-width: 0 0 0 4px;
+}
+.jfx-list-cell:hover {
+    -fx-background-color: #F5F5F5;
+}
+
+/* --- EDITOR ROWS --- */
+.field-row {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);
 }

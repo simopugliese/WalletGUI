@@ -4,41 +4,39 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0"
-      spacing="20.0" styleClass="root-pane"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.simonepugliese.walletgui.controllers.LoginController">
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.simonepugliese.walletgui.controllers.LoginController">
 
-    <padding>
-        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0"/>
-    </padding>
+    <VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+          prefWidth="400.0" spacing="25.0" styleClass="card-pane">
 
-    <Label fx:id="titleLabel" text="Wallet Login" styleClass="title-label" />
+        <Label fx:id="titleLabel" text="Wallet Login" styleClass="title-label" />
 
-    <JFXPasswordField fx:id="passwordField" onAction="#handleLogin"
-                      promptText="Master Password" />
+        <JFXPasswordField fx:id="passwordField" onAction="#handleLogin"
+                          promptText="Master Password" labelFloat="true" />
 
-    <Label fx:id="verifyPasswordLabel" text="Verifica Password"
-           styleClass="verify-label"
-           managed="false" visible="false">
-        <VBox.margin>
-            <Insets top="10.0"/>
-        </VBox.margin>
-    </Label>
+        <Label fx:id="verifyPasswordLabel" text="Verifica Password"
+               styleClass="label-small"
+               managed="false" visible="false">
+            <VBox.margin>
+                <Insets top="5.0"/>
+            </VBox.margin>
+        </Label>
 
-    <JFXPasswordField fx:id="verifyPasswordField" onAction="#handleLogin"
-                      promptText="Ripeti la password"
-                      managed="false" visible="false"/>
+        <JFXPasswordField fx:id="verifyPasswordField" onAction="#handleLogin"
+                          promptText="Ripeti la password" labelFloat="true"
+                          managed="false" visible="false"/>
 
-    <JFXButton fx:id="loginButton" onAction="#handleLogin"
-               prefHeight="40.0" prefWidth="120.0"
-               text="Accedi"
-               styleClass="button-raised" >
-        <VBox.margin>
-            <Insets top="15.0"/>
-        </VBox.margin>
-    </JFXButton>
-</VBox>
+        <JFXButton fx:id="loginButton" onAction="#handleLogin"
+                   prefHeight="45.0" prefWidth="Infinity"
+                   text="Accedi"
+                   styleClass="button-primary">
+            <VBox.margin>
+                <Insets top="15.0"/>
+            </VBox.margin>
+        </JFXButton>
+    </VBox>
+</StackPane>
