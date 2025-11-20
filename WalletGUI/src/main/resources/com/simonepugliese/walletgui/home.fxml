@@ -20,6 +20,17 @@
         <String fx:value="@style.css" />
     </stylesheets>
 
+    <fx:define>
+        <JFXDrawer fx:id="categoryDrawer" direction="LEFT" defaultDrawerSize="220"
+                   resizableOnDrag="true">
+            <sidePane>
+                <VBox styleClass="drawer-pane" prefWidth="220">
+                    <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
+                </VBox>
+            </sidePane>
+        </JFXDrawer>
+    </fx:define>
+
     <content>
         <BorderPane>
             <top>
@@ -37,15 +48,5 @@
             </center>
         </BorderPane>
     </content>
-
-    <JFXDrawer fx:id="categoryDrawer" direction="LEFT" defaultDrawerSize="220"
-               resizableOnDrag="true"
-               visible="false" managed="false">
-        <sidePane>
-            <VBox styleClass="drawer-pane" prefWidth="220">
-                <JFXListView fx:id="categoryListView" styleClass="drawer-list"/>
-            </VBox>
-        </sidePane>
-    </JFXDrawer>
 
 </JFXDrawersStack>
